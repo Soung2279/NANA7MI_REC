@@ -293,6 +293,7 @@ async def send_nnmlove(bot, ev) -> MessageSegment:
             rec = R.rec(record_nnm_folder, filename).cqcode
             await bot.send(ev, rec)
             if random.random() < 0.08:  # 8%机率触发王喜顺彩蛋
+                await bot.send(ev, "恭喜你触发了彩蛋！")
                 await bot.send(ev, R.rec('nana7mi/special/坐飞机去你的坟头疯狂的偷吃你的贡品.mp3').cqcode)
     else:
         await bot.send(ev, f"bot无法发送语音，原因：/can_send_record = {record_check}")
@@ -331,4 +332,5 @@ async def send_random_allnnm(bot, ev: CQEvent):
         rec = R.rec(select, filename).cqcode
         await bot.send(ev, rec)
         if random.random() < 0.08:  # 8%机率触发王喜顺彩蛋
+            await bot.send(ev, "恭喜你触发了彩蛋！")
             await bot.send(ev, R.rec('nana7mi/special/坐飞机去你的坟头疯狂的偷吃你的贡品.mp3').cqcode)
