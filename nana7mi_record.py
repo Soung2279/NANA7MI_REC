@@ -26,9 +26,6 @@ SEXY_LIST = nana7mi_recore_data.SEXY_NANA7MI_RECORD_DATA
 TRAIN_LIST = nana7mi_recore_data.TRAIN_SONGS_DATA
 OTTO_LIST = nana7mi_recore_data.OTTOLANGUAGE_NANA7MI_DATA
 
-forward_msg_name = config.FORWARD_MSG_NAME
-forward_msg_uid = config.FORWARD_MSG_UID
-
 USE_BILIURL = True  #发送语音（优质二创）时是否附带发送原曲链接，True为附带False为不附带
 
 sv_help = '''
