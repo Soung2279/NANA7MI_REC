@@ -118,7 +118,7 @@ async def send_nnmsongs(bot, ev: CQEvent):
         else:
             await bot.send(ev, f"对于此作品，我的评价是：{Content}")
 
-    if input in search_range:  #当参数在编号范围内时
+    if int(input) in search_range:  #当参数在编号范围内时
         nums = int(input)
         Song_name = SONG_LIST[nums][0]  #获取文件名
         Url = SONG_LIST[nums][1]  #获取原曲链接
