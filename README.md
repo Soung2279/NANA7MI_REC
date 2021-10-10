@@ -85,8 +85,6 @@ RES_DIR = r'X:/xxx/'
 
 </details>
 
-- **步骤三** : 前往仓库 **[HoshinoBot增强-语音调用支持](https://github.com/Soung2279/advance_R)** 处下载 ``R.py`` ，并替换至 ``/hoshino`` 处。
-
 <br>如果按照步骤正常安装，重启 HoshinoBot 即可开始使用本功能。</br>
 
 *****
@@ -111,22 +109,28 @@ RES_DIR = r'X:/xxx/'
 
 ## 额外说明
 
-可在 ``nana7mi_record.py`` 的第32行，设置 发送语音（优质二创）时是否附带发送原曲链接
+可在 ``nana7mi_record.py`` 的第24，25行，设置 发送语音（优质二创）时**是否附带发送原曲链接**和**是否发送语音文件名**
 
-True为附带  False为不附带
+True 为附带  False 为不附带
 
 ```python
-USE_BILIURL = True  #发送语音（优质二创）时是否附带发送原曲链接，True为附带False为不附带
+USE_BILIURL = True  #发送优质二创时是否附带发送原曲链接，True为附带False为不附带
+SHOW_FILENAME = True  #发送语音时是否附带发送文件名，True为附带False为不附带
 ```
 
-语音文件的路径设置在 ``nana7mi_record.py`` 的第68-73行，若您有其它资源路径，请在此处进行更改
+语音文件的路径设置在 ``nana7mi_record.py`` 的第62-97行，若您有其它资源路径，请在此处进行更改
 
 ```python
 nana7mi_songs_folder = R.rec('nana7mi/精品单曲/').path   #鬼畜歌曲的文件路径
+...
 sexy_nana7mi_folder = R.rec('nana7mi/怪叫/').path    #怪叫合集的文件路径
+...
 train_folder = R.rec('nana7mi/小火车/').path     #各种小火车的文件路径
+...
 ottolanguage_nana7mi_folder = R.rec('nana7mi/古神语特辑/').path  #七海nana7mi特供古神语
+...
 record_nnm_folder = R.rec('nana7mi/切片语音').path  #各种切片语音
+...
 ```
 
 本项目后续将保持更新，可在本页面 [更新日志](#更新日志) 与 Release 处 查看更新的资源内容。若您想自行添加更新，请按照 ``nana7mi_record_data.py`` 里的模板进行字典的添加。
@@ -153,6 +157,18 @@ made by [Soung2279@Github](https://github.com/Soung2279/)
 [HoshinoBot项目地址](https://github.com/Ice-Cirno/HoshinoBot)
 
 ### 更新日志
+
+##### 2021/10/10
+
+修复了【来点可爱小七海】可能无法使用的错误
+
+**为兼容原生HoshinoBot，去除对[HoshinoBot增强-语音调用支持](https://github.com/Soung2279/advance_R)的使用**
+
+新增配置：是否显示发送语音文件名
+
+去除彩蛋
+
+~~新增的语音文件将上传在Release处，请注意~~
 
 ##### 2021/9/19
 
