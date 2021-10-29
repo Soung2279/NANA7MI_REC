@@ -35,11 +35,13 @@ sv_help = '''
 
 - [来点小火车/来点铁轨难题]   发经典小火车，包括小火车的其它版本
 
-- [来点古神语/]   发点娜娜米台词回古神语
+- [来点古神语]   发点娜娜米台词回古神语
 
 - [来点可爱小七海]   随机发送语音，选取范围不含小火车/怪叫/二创/古神语
 
 - [来点可爱大七海]   随机发送语音，选取范围包含所有项目
+
+- [更多小七海]   查看bot语音收藏来源
 
 七海Nana7mi 主页：https://space.bilibili.com/434334701
 '''.strip()
@@ -190,8 +192,10 @@ async def idlist_song(bot, ev):
 @sv.on_fullmatch(["来点滑了", "来点烧0娜娜米", "来点烧0nana7mi", "来点入脑", "来点娜娜米怪叫", "来点nana7mi怪叫", "发点怪叫"])
 async def send_nnmsexy(bot, ev) -> MessageSegment:
     uid = ev['user_id']
-    voice_name = nnm_random_sexys()[1]
-    sexy_rec = nnm_random_sexys()[0]
+    voice_list = []
+    voice_list = nnm_random_sexys()
+    voice_name = voice_list[1]
+    sexy_rec = voice_list[0]
 
     if not _nlmt.check(uid):
         data = {
@@ -219,8 +223,10 @@ async def send_nnmsexy(bot, ev) -> MessageSegment:
 @sv.on_fullmatch(["来点小火车", "来点铁轨难题", "发点小火车"])
 async def send_nnmtrain(bot, ev) -> MessageSegment:
     uid = ev['user_id']
-    voice_name = nnm_random_trains()[1]
-    train_rec = nnm_random_trains()[0]
+    voice_list = []
+    voice_list = nnm_random_trains()
+    voice_name = voice_list[1]
+    train_rec = voice_list[0]
 
     if not _nlmt.check(uid):
         data = {
@@ -254,8 +260,10 @@ async def send_nnmotto(bot, ev) -> MessageSegment:
         return
     _flmt.start_cd(uid)
 
-    voice_name = nnm_random_ottos()[1]
-    otto_rec = nnm_random_ottos()[0]
+    voice_list = []
+    voice_list = nnm_random_ottos()
+    voice_name = voice_list[1]
+    otto_rec = voice_list[0]
 
     if not _nlmt.check(uid):
         data = {
@@ -298,9 +306,13 @@ async def send_nnmlove(bot, ev):
         return
     _nlmt.increase(uid)
 
-    voice_name = nnm_random_recs()[1]
-    minrec_rec = nnm_random_recs()[0]
-    try:
+
+    voice_list = []
+    voice_list = nnm_random_recs()
+    voice_name = voice_list[1]
+    minrec_rec = voice_list[0]
+
+    try:    
         final_send = MessageSegment.record(f'file:///{os.path.abspath(minrec_rec.path)}')
         await bot.send(ev, final_send)
         if SHOW_FILENAME is True:
@@ -323,7 +335,7 @@ async def send_random_allnnm(bot, ev):
             "type": "share",
             "data": {
                 "url": "https://live.bilibili.com/21452505",
-                "title": "七海Nana7mi的直播间 - 哔哩哔哩直播",
+                "title": "七海Nana7mi的直播间 - 哔哩哔哩直播，二次元直播平台",
                 "content": "每天晚上21:00开播 除了周一是24:00开播！"
                 }
             }
@@ -350,6 +362,6 @@ async def collection_nnm(bot, ev):
             "title": "松尧尧尧尧尧尧的收藏夹【切片】 - 哔哩哔哩",
             "content": "创建者：松尧尧尧尧尧尧 - 公开"
             }
-    }
+        }
     await bot.send(ev, "更多内容可以前往我的B站收藏夹哦~")
     await bot.send(ev, data)
